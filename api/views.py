@@ -85,32 +85,41 @@ def event_detail(request, UserDevice):
 	return HttpResponse(results,content_type='application/json')
 
 
-@api_view(['GET'])
-def block_event_add(request, EventName):
-	if request.method == 'GET':
+@api_view(['POST'])
+def block_event_add(request):
+	if request.method == 'POST':
 		results = []
-		if BlockedEvents.objects.filter(EventName=EventName).exists():
-			results.append({'Error': 'EventName is already blcoked'})
-			return HttpResponse(results, content_type='application/json')
-
-		E = BlockedEvents(EventName=EventName, Counter=0)
-		E.save()
-		results.append({'Success': 'Event has been succesfully blocked'})
-		return HttpResponse(results,content_type='application/json')
-
-
-@api_view(['GET'])
-def block_event_delete(request, EventName):
-	if request.method == 'GET':
-		results = []
-		if BlockedEvents.objects.filter(EventName=EventName).exists():
-			E = BlockedEvents.objects.filter(EventName=EventName)
-			E.delete()
-			results.append({'Success': 'Event has been removed from Block List'})
-			return HttpResponse(results, content_type='application/json')
-		else:
-			results.append({'Error': 'Event was already deleted / Event not found in BlockedEvents List'})
+		try:
+			if BlockedEvents.objects.filter(EventName=request.data['EventName']).exists():
+				results.append({'Error': 'EventName is already blocked'})
+				return HttpResponse(results, content_type='application/json')
+			E = BlockedEvents(EventName=request.data['EventName'], Counter=0)
+			E.save()
+			results.append({'Success': 'Event has been succesfully blocked'})
 			return HttpResponse(results,content_type='application/json')
+		except:
+			results.append({'Error': 'Invalid input data'})
+			return HttpResponse(results, content_type='application/json')
+
+
+@api_view(['POST'])
+def block_event_delete(request):
+	if request.method == 'POST':
+		results = []
+		try:
+			if BlockedEvents.objects.filter(EventName=request.data['EventName']).exists():
+				E = BlockedEvents.objects.filter(EventName=request.data['EventName'])
+				E.delete()
+				results.append({'Success': 'Event has been removed from Block List'})
+				return HttpResponse(results, content_type='application/json')
+			else:
+				results.append({'Error': 'Event was already deleted / Event not found in BlockedEvents List'})
+				return HttpResponse(results,content_type='application/json')
+		except:
+			results.append({'Error': 'Invalid input data'})
+			return HttpResponse(results, content_type='application/json')
+
+
 
 
 
