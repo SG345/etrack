@@ -25,16 +25,25 @@ API 2 - List the events corresponding to a particular device id
 
 ## Endpoints
 
-#### Brief Summary of Endpoints 
+#### Brief Summary of API Endpoints 
 
-- **[<code>POST</code> api/events/]()**
 - **[<code>POST</code> api/adduser/]()**
-- **[<code>GET</code> api/event/get/USERDEVICE/]()**
-- **[<code>GET</code> api/event/block/add/EventName/]()**
-- **[<code>GET</code> api/event/block/delete/EventName/]()**
+- **[<code>POST</code> api/events/]()**
+- **[<code>GET</code> api/event/get/UserDevice/]()**
+- **[<code>POST</code> api/event/block/add/]()**
+- **[<code>POST</code> api/event/block/delete/]()**
 
+# Add user and assign a DeviceID into system
 
-**Add user and his userdeviceID into the system**
+    POST api/adduser/
+
+## Description
+Each UniqueDevice is mapped to a username.
+## Parameters
+- **UserName** _(required)_ 
+- **UserDevice** _(required)_ 
+
+**Example of adding user/device**
 
     curl -X POST http://localhost:8000/api/adduser/ -d "UserName=Sushrut&UserDevice=MacbookAir4"
 
