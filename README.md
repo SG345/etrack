@@ -184,12 +184,12 @@ If successful, a JSON-response indicating success will be returned to the caller
 
 **Add Event into BlockedEventList**
 
-    curl -X POST http://localhost:8000/api/event/block/delete/Golmaal/
+    curl -X POST http://localhost:8000/api/event/block/add/Golmaal/
 
 **Return** 
 
 ```json
-{"Success": "Event has been removed from Block List"
+{"Success": "Event has been added to BlockedList"
 ```
 
 **Remove Event from BlockedEventList**
