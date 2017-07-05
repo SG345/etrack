@@ -130,6 +130,25 @@ If successful, a JSON-response indicating success will be returned to the caller
 {"Error": "Event was blocked as per existing rules"}
 ```
 
+# Retrieve EventDetails for a particular UserDevice ID
+
+    GET api/event/get/UserDeviceID/
+
+**Retrieve Events recorded from a particular UserDeviceID**
+
+    curl -X GET http://localhost:8000/api/event/get/MacbookAir4/
+    
+
+**Return** 
+
+```json
+
+{'UserName': u'Sushrut', 'EventName': u'Serendpitiy', 'EventLabel': u'Movie', 'EventAction': u'Downloaded', 'EventTime': '2017-07-05 18:16'}
+{'UserName': u'Sushrut', 'EventName': u'Avicii', 'EventLabel': u'Song', 'EventAction': u'Downloaded', 'EventTime': '2017-07-05 18:17'}
+
+```
+
+
 # Manage BlockedEventList
 
     POST api/event/block/add/
