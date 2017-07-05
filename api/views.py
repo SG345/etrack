@@ -38,18 +38,23 @@ def checkblockedlist(ename):
 @api_view(['POST'])
 def event_post(request):
 	if request.method == 'POST':
-		f = checkblockedlist(request.data[('EventName')])
 
+		results = []
+		f = checkblockedlist(request.data[('EventName')])
 		if f == 0:
 			serializer = LogSerializer(data=request.data)
-			if serializer.is_valid():
-				serializer.save()
 
-				return Response(serializer.data, status=status.HTTP_201_CREATED)
+			if serializer.is_valid():
+				if UDevice.objects.filter(UID=request.data['UserDevice']).exists():
+					serializer.save()
+					results.append({'Success': 'Event recorded'})
+					return Response(results, content_type='application/json')
+				else:
+					results.append({'Error': 'UserDevice does not exist in the system'})
+					return Response(results,content_type='application/json')
 			else:
 				return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 		else:
-				results = []
 				results.append({'Error': 'Event was blocked as per existing rules'})
 				return HttpResponse(results,content_type='application/json')
 
