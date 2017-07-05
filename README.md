@@ -2,25 +2,30 @@
 
  The features of the tracking system are as listed below:
  
-● The stream comes with a  unique device id  and a list of events performed along with the attributes for those events. Each device corresponds to a  user_id  in the system. (Note: A mapping from unique device id to user_id can be assumed to be present in the system)
+1) The stream comes with a  unique device id  and a list of events performed along with the attributes for those events. Each device corresponds to a  user_id  in the system. (Note: A mapping from unique device id to user_id can be assumed to be present in the system)
 
-● Some particular events can be blocked at the backend and should be filtered out (not saved) by the API
+2) Some particular events can be blocked at the backend and should be filtered out (not saved) by the API
 
-● Any blocked event should be logged and a counter has to be maintained against any blocked event to count the number of such events blocked (a blocked count per event name)
+3) Any blocked event should be logged and a counter has to be maintained against any blocked event to count the number of such events blocked (a blocked count per event name)
 
-● The system should allow blocking any event in realtime (as simple as adding another database entry to block a particular event).
+4) The system should allow blocking any event in realtime (as simple as adding another database entry to block a particular event).
 
-● If the unique device identifier is not found in the system, the api should return appropriate status back to the caller (Missing device id etc).
+5) If the unique device identifier is not found in the system, the api should return appropriate status back to the caller (Missing device id etc).
 
-● If all checks are passed, the event should be saved in a database, along with the event attributes, against the  user_id  that the event corresponds to. The api should return success in such a case.
+6) If all checks are passed, the event should be saved in a database, along with the event attributes, against the  user_id  that the event corresponds to. The api should return success in such a case.
 
-● The API should have appropriate error handling in place to handle scenarios like infrastructure failures (database unavailable etc) and any other failures points you can foresee.
+7) The API should have appropriate error handling in place to handle scenarios like infrastructure failures (database unavailable etc) and any other failures points you can foresee.
 
 API 1 - Consume the event stream as described above
+
 API 2 - List the events corresponding to a particular device id
 ***
 
+## Installation and Running
 
+1) "pip install -r requirements.txt" ; Django version - 1.9 & "djangorestframework" is required.
+
+2) "python manage.py runserver"
 
 
 ## Endpoints
