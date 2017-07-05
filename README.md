@@ -100,9 +100,9 @@ If successful, a JSON-response indicating success will be returned to the caller
 
 **Return** 
 
-``` json
-[{"Error":"UserDevice does not exist in the system"}] ```
-
+```json
+[{"Error":"UserDevice does not exist in the system"}]
+```
 
 **Event record with missing parameter**
 
@@ -111,7 +111,8 @@ If successful, a JSON-response indicating success will be returned to the caller
 **Return**
 
 ```json
-{"UserDevice":["This field is required."],"EventAction":["This field is required."]}```
+{"UserDevice":["This field is required."],"EventAction":["This field is required."]}
+```
 
 
 **Event record with blocked event**
@@ -121,7 +122,8 @@ If successful, a JSON-response indicating success will be returned to the caller
 **Return** 
 
 ```json
-{"Error": "Event was blocked as per existing rules"}```
+{"Error": "Event was blocked as per existing rules"}
+```
 
 # Manage BlockedEventList
 
@@ -149,7 +151,8 @@ If successful, a JSON-response indicating success will be returned to the caller
 **Return** 
 
 ```json
-{'Success': 'Event has been removed from Block List'```
+{"Success": "Event has been removed from Block List"
+```
 
 **Remove Event from BlockedEventList**
 
@@ -158,7 +161,8 @@ If successful, a JSON-response indicating success will be returned to the caller
 **Return** 
 
 ```json
-{"Success": "Event has been removed from Block List"```
+{"Success": "Event has been removed from Block List"
+```
 
 
 
