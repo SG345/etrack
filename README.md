@@ -42,7 +42,9 @@ API 2 - List the events corresponding to a particular device id
 Each unique device is mapped to a username.
 
 ## Parameters
+
 - **UserName** _(required)_ 
+
 - **UserDevice** _(required)_ 
 
 **Example of mapping a username and userdevice**
@@ -75,6 +77,7 @@ Event details are recorded and stored in the database. If the EventName matches 
 - **UserDevice** _(required)_ — UserDevice where this event was recorded:
 
 ## Return format
+
 If successful, a JSON-response indicating success will be returned to the caller. If not successful, appropriate error messages such as missing parameters/info will be returned to the caller in JSON format.
 
 
@@ -107,7 +110,7 @@ If successful, a JSON-response indicating success will be returned to the caller
 
 **Return**
 
-``` json
+```json
 {"UserDevice":["This field is required."],"EventAction":["This field is required."]}```
 
 
@@ -117,7 +120,7 @@ If successful, a JSON-response indicating success will be returned to the caller
 
 **Return** 
 
-``` json
+```json
 {"Error": "Event was blocked as per existing rules"}```
 
 # Manage BlockedEventList
@@ -154,7 +157,7 @@ If successful, a JSON-response indicating success will be returned to the caller
 
 **Return** 
 
-``` json
+```json
 {"Success": "Event has been removed from Block List"```
 
 
