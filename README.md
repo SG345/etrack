@@ -76,6 +76,8 @@ Each unique device is mapped to a username.
 {"Success": "Username/Device mapped successfully"}
 ```
 
+If a user-device was already assigned to a particular user, the JSON response will return an error stating the same.
+
 ## Record event activity from the stream
 
     POST api/events/
