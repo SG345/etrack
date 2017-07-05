@@ -33,7 +33,7 @@ API 2 - List the events corresponding to a particular device id
 - **[<code>POST</code> api/event/block/add/]**
 - **[<code>POST</code> api/event/block/delete/]**
 
-# Add user and assign a DeviceID into system
+## Add user and assign a DeviceID into system
 
     POST api/adduser/
 
@@ -51,18 +51,21 @@ Each unique device is mapped to a username.
 
 **Return** 
 
-``` json
-{'Success': 'Username/Device mapped successfully'}```
+```json
+{"Success": "Username/Device mapped successfully"}
+```
 
 ## Record event activity from the stream
 
     POST api/events/
 
 ## Description
+
 Event details are recorded and stored in the database. If the EventName matches the name in **BlockedEventList** it will not be stored in the database.
 
 
 ## Parameters
+
 - **EventName** _(required)_ — Name of the event
 
 - **EventLabel** _(required)_ — Label for the event:
@@ -76,12 +79,14 @@ If successful, a JSON-response indicating success will be returned to the caller
 
 
 ## Examples
+
 **Event record**
 
     curl -X POST http://localhost:8000/api/events/ -d "EventName=DieHard&EventLabel=Movie&EventAction=Downloaded&UserDevice=MacbookPro" 
 
 **Return** 
-``` json
+
+```json
 [{"Success":"Event recorded"}]
 ``` 
 
@@ -91,6 +96,7 @@ If successful, a JSON-response indicating success will be returned to the caller
 
 
 **Return** 
+
 ``` json
 [{"Error":"UserDevice does not exist in the system"}] ```
 
@@ -99,7 +105,8 @@ If successful, a JSON-response indicating success will be returned to the caller
 
     curl -X POST http://localhost:8000/api/events/ -d "EventName=DieHard&EventLabel=Movie"
 
-**Return** 
+**Return**
+
 ``` json
 {"UserDevice":["This field is required."],"EventAction":["This field is required."]}```
 
@@ -109,8 +116,9 @@ If successful, a JSON-response indicating success will be returned to the caller
     curl -X POST http://localhost:8000/api/events/ -d "EventName=Golmaal&EventLabel=Movie&EventAction=Downloaded&UserDevice=MacbookAir"
 
 **Return** 
+
 ``` json
-{'Error': 'Event was blocked as per existing rules'}```
+{"Error": "Event was blocked as per existing rules"}```
 
 # Manage BlockedEventList
 
@@ -118,13 +126,16 @@ If successful, a JSON-response indicating success will be returned to the caller
     POST api/event/block/delete/
 
 ## Description
+
 Event details are added/deleted from the BlockedEventList.
 
 ## Parameters
+
 - **EventName** _(required)_ — Name of the event to be added/deleted
 
 
 ## Return format
+
 If successful, a JSON-response indicating success will be returned to the caller. If not successful, appropriate error messages such as missing parameters/info will be returned to the caller in JSON format.
 
 
@@ -133,7 +144,8 @@ If successful, a JSON-response indicating success will be returned to the caller
     curl -X POST http://localhost:8000/api/event/block/delete/Golmaal/
 
 **Return** 
-``` json
+
+```json
 {'Success': 'Event has been removed from Block List'```
 
 **Remove Event from BlockedEventList**
@@ -141,8 +153,9 @@ If successful, a JSON-response indicating success will be returned to the caller
     curl -X POST http://localhost:8000/api/event/block/delete/Golmaal/
 
 **Return** 
+
 ``` json
-{'Success': 'Event has been removed from Block List'```
+{"Success": "Event has been removed from Block List"```
 
 
 
