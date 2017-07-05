@@ -34,6 +34,15 @@ API 2 - List the events corresponding to a particular device id
 - **[<code>GET</code> api/event/block/delete/EventName/]()**
 
 
+**Add user and his userdeviceID into the system**
+
+    curl -X POST http://localhost:8000/api/adduser/ -d "UserName=Sushrut&UserDevice=MacbookAir4"
+
+**Return** 
+``` json
+{'Success': 'Username/Device mapped successfully'}```
+
+
 # Record event activity from the stream
 
     POST api/events/
@@ -72,7 +81,8 @@ If successful, a JSON-response indicating success will be returned to the caller
 
 **Return** 
 ``` json
-[{"Error":"UserDevice does not exist in the system"}]```
+[{"Error":"UserDevice does not exist in the system"}] ```
+
 
 **Event record with missing parameter**
 
@@ -91,46 +101,39 @@ If successful, a JSON-response indicating success will be returned to the caller
 ``` json
 {'Error': 'Event was blocked as per existing rules'}```
 
+# Manage BlockedEventList
 
-
-# Block particular events that shouldn't be logged
-
-    GET api/event/event/block/add/EventName/
+    POST api/event/block/add/
+    POST api/event/block/delete/
 
 ## Description
-This will add EventName to BlockedEventList
+Event details are added/deleted from the BlockedEventList.
 
 ## Parameters
-- **EventName** _(required)_ — Name of the event
+- **EventName** _(required)_ — Name of the event to be added/deleted
 
 
 ## Return format
 If successful, a JSON-response indicating success will be returned to the caller. If not successful, appropriate error messages such as missing parameters/info will be returned to the caller in JSON format.
 
 
+**Add Event into BlockedEventList**
 
-
-
-
-
-
-**Add EventName to BlockedEventList**
-
-    curl -X GET http://localhost:8000/api/event/block/add/Golmaal/
+    curl -X POST http://localhost:8000/api/event/block/delete/Golmaal/
 
 **Return** 
 ``` json
-{'Success': 'Event has been succesfully blocked'}```
+{'Success': 'Event has been removed from Block List'```
 
+**Remove Event from BlockedEventList**
 
-
-**Event record with blocked event**
-
-    curl -X POST http://localhost:8000/api/events/ -d "EventName=Golmaal&EventLabel=Movie&EventAction=Downloaded&UserDevice=MacbookAir"
+    curl -X POST http://localhost:8000/api/event/block/delete/Golmaal/
 
 **Return** 
 ``` json
-{'Error': 'Event was blocked as per existing rules'}```
+{'Success': 'Event has been removed from Block List'```
+
+
 
 
 
