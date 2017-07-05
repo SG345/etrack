@@ -28,6 +28,7 @@ After cloning the repository:
 
 2) "python manage.py runserver" to start the server. A new terminal tab may be used and CURL POST/GET requests may be used to test the API endpoints.
 
+Note: This project is tested on OS X 10.12 only. 
 
 ## Endpoints
 
