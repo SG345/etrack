@@ -52,7 +52,7 @@ Event details are recorded and stored in the database. If the EventName matches 
 - **UserDevice** _(required)_ — UserDevice where this event was recorded:
 
 ## Return format
-If successful, a JSON-serialized list with all the input parameters will be returned. If not successful, appropriate error messages such as missing parameters/info will be returned to the caller in JSON format.
+If successful, a JSON-response indicating success will be returned to the caller. If not successful, appropriate error messages such as missing parameters/info will be returned to the caller in JSON format.
 
 
 ## Examples
@@ -69,10 +69,10 @@ If successful, a JSON-serialized list with all the input parameters will be retu
 
     curl -X POST http://localhost:8000/api/events/ -d "EventName=Serendpity&EventLabel=Movie&EventAction=Downloaded&UserDevice=Lenovo442" 
 
+
 **Return** 
 ``` json
 [{"Error":"UserDevice does not exist in the system"}]```
-
 
 **Event record with missing parameter**
 
@@ -81,5 +81,57 @@ If successful, a JSON-serialized list with all the input parameters will be retu
 **Return** 
 ``` json
 {"UserDevice":["This field is required."],"EventAction":["This field is required."]}```
+
+
+**Event record with blocked event**
+
+    curl -X POST http://localhost:8000/api/events/ -d "EventName=Golmaal&EventLabel=Movie&EventAction=Downloaded&UserDevice=MacbookAir"
+
+**Return** 
+``` json
+{'Error': 'Event was blocked as per existing rules'}```
+
+
+
+# Block particular events that shouldn't be logged
+
+    GET api/event/event/block/add/EventName/
+
+## Description
+This will add EventName to BlockedEventList
+
+## Parameters
+- **EventName** _(required)_ — Name of the event
+
+
+## Return format
+If successful, a JSON-response indicating success will be returned to the caller. If not successful, appropriate error messages such as missing parameters/info will be returned to the caller in JSON format.
+
+
+
+
+
+
+
+
+**Add EventName to BlockedEventList**
+
+    curl -X GET http://localhost:8000/api/event/block/add/Golmaal/
+
+**Return** 
+``` json
+{'Success': 'Event has been succesfully blocked'}```
+
+
+
+**Event record with blocked event**
+
+    curl -X POST http://localhost:8000/api/events/ -d "EventName=Golmaal&EventLabel=Movie&EventAction=Downloaded&UserDevice=MacbookAir"
+
+**Return** 
+``` json
+{'Error': 'Event was blocked as per existing rules'}```
+
+
 
 
