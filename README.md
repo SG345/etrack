@@ -30,6 +30,18 @@ After cloning the repository:
 
 Note: This project is tested on OS X 10.12 only. 
 
+## Notes
+
+Since the task was open-ended as the requirements very not very specific in terms of implementation, I've made a number of assumptions. 
+The objective is to build an API which can help us to track user events. What is an Event? Event is any activity that is meaningful enough for us to track. For my project, the Event has following attributes: EventName, EventLabel, EventAction, EventTime (automatically timestamp is generated at the time of tracking event), UserDevice(the device used). 
+
+I've made a function to assign a username to a userdevice. 
+I'm utilizing SQLite as a database storage as it is simple enough for this specific use-case. If the Event-data structure were to be more complex a NoSQL data storage solution might be more efficient for more complex database lookups.
+
+ I'd probably add some authentication layer for the administrative backend functions and re-factor the code to make it more modular and separate the code into different files. As of now I've included all the core code in a single views.py file so that it may be easier for assessment. I have handled all the edge cases that I could think of and exception/error handling as per the problem statement.
+ 
+
+
 ## Endpoints
 
 #### Brief Summary of API Endpoints 
