@@ -14,6 +14,9 @@ def adduser(request):
 	if request.method == 'POST':
 		results = []
 		try:
+			if UDevice.objects.filter(UID=request.data['UserDevice']).exists():
+				results.append({'Failed': 'UserDevice is already mapped to a user'})
+				return HttpResponse(results,content_type='application/json')
 			Mapper = UDevice(UID = request.data['UserDevice'], UserName = request.data['UserName'])
 			Mapper.save()
 			results.append({'Success': 'Username/Device mapped successfully'})
