@@ -1,7 +1,6 @@
-# EventTracking API Assignment - Problem Statement
+# EventTracking API Assignment 
 
- The features of the tracking system are as listed below:
- 
+## Problem Statement/Description of tasks 
 1) The stream comes with a  unique device id  and a list of events performed along with the attributes for those events. Each device corresponds to a  user_id  in the system. (Note: A mapping from unique device id to user_id can be assumed to be present in the system)
 
 2) Some particular events can be blocked at the backend and should be filtered out (not saved) by the API
@@ -21,11 +20,13 @@ API 1 - Consume the event stream as described above
 API 2 - List the events corresponding to a particular device id
 ***
 
-## Installation and Running
+## Installation / Usage
 
-1) "pip install -r requirements.txt" ; Django version - 1.9 & "djangorestframework" is required.
+After cloning the repository: 
 
-2) "python manage.py runserver"
+1) "pip install -r requirements.txt" ; Django version - 1.9.1 & "djangorestframework" is required.
+
+2) "python manage.py runserver" to start the server. A new terminal tab may be used and CURL POST/GET requests may be used to test the API endpoints.
 
 
 ## Endpoints
