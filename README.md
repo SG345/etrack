@@ -143,8 +143,8 @@ If successful, a JSON-response indicating success will be returned to the caller
 
 ```json
 
-{'UserName': u'Sushrut', 'EventName': u'Serendpitiy', 'EventLabel': u'Movie', 'EventAction': u'Downloaded', 'EventTime': '2017-07-05 18:16'}
-{'UserName': u'Sushrut', 'EventName': u'Avicii', 'EventLabel': u'Song', 'EventAction': u'Downloaded', 'EventTime': '2017-07-05 18:17'}
+{"UserName": u"Sushrut", "EventName": u"Serendpitiy", "EventLabel": u"Movie", "EventAction": u"Downloaded", "EventTime": "2017-07-05 18:16"}
+{"UserName": u"Sushrut", "EventName": u"Avicii", "EventLabel": u"Song", "EventAction": u"Downloaded", "EventTime": "2017-07-05 18:17"}
 
 ```
 
